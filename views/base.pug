@@ -1,0 +1,52 @@
+//- doctype html 
+//- html 
+//-     head 
+//-         title Natours
+//-         link(rel = 'stylesheet' href='css/style.css')
+//-         link(rel = 'shortcut icon' type='img/png' href='img/favicon.png')
+//-         //-how does pug know where to find the above pages
+//-         //-these are static files and we already handled the requests for static files
+//-         //-so when the browser asks for the static files we direct them to the public folder
+//-     body 
+//-         //- h1=tour
+//-         //- //-coming from the app.js file
+//-         //- h2= user.toUpperCase()
+//-         //- //-h2 is a buffered code, this will add something to the output
+
+//-         //- //- we can also write unbuffered code, doesnt add anything to the output
+//-         //- //-starts with a -
+//-         //- - const x = 9;
+//-         //- h2= 2*x
+//-         //- //-interpolated text something like the es6 ${}
+//-         //- h1 The Park Camper #{tour} #{user}
+//-         //- p this is just some text
+
+
+doctype html 
+html 
+    head
+        block head
+            meta(charset='UTF-8')
+            meta(name='viewport' content='width=device-width, initial-scale=1.0')
+            link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+            link(rel='stylesheet' href='/css/style.css')
+            link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+            title Natours | #{title}
+
+    body 
+        //-HEADER
+        include _header
+
+        //- CONTENT
+        block content 
+            h1 This is a placeholder heading 
+
+        //- FOOTER
+        include _footer
+
+        script(src='/js/mapBox.js')
+        script(src='/js/login.js')
+        script(src='/js/updateSettings.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js')
+
+
