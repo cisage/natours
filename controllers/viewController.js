@@ -27,7 +27,7 @@ exports.getTour = async (req, res) => {
     if (!tour) {
       return next(new AppError('No tour with that name', 404));
     }
-    console.log(tour);
+    //console.log(tour);
     res
       .status(200)
       .set(

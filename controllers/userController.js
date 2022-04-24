@@ -62,8 +62,8 @@ exports.resizeUserPhoto = (req, res, next) => {
 };
 
 exports.updateMe = async (req, res, next) => {
-  console.log(req.file);
-  console.log(req.body);
+  //console.log(req.file);
+  //console.log(req.body);
   //this lets a user changes his password
 
   //1)first we check if  user is trying to update his password
@@ -79,7 +79,7 @@ exports.updateMe = async (req, res, next) => {
   if (req.file) {
     filterObj.photo = req.file.filename;
   }
-  console.log(filterObj);
+  //console.log(filterObj);
 
   const updatedUser = await User.findByIdAndUpdate(req.user._id, filterObj, {
     new: true,

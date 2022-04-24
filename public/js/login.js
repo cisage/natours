@@ -1,5 +1,5 @@
 const login = async (email, password) => {
-  console.log(email, password);
+  //console.log(email, password);
   try {
     //in axios if an error is sent back as response then we can use catch that error on the client side
     const res = await axios({

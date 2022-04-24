@@ -48,7 +48,7 @@ class APIFeatures {
         /(,)/g,
         (match) => ' '
       );
-      console.log(this.queryString);
+      //console.log(this.queryString);
       this.query = this.query.sort(this.queryString.sort);
 
       //to sort with multiple attributes in mongoose

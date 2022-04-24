@@ -29,7 +29,7 @@ const reviewSchema = new mongoose.Schema({
 reviewSchema.index({ tour: 1, user: 1 }, { unique: true }); //this will make sure that the combination of tour and user is always unique, that is a user can only review a tour once
 
 reviewSchema.pre(/^find/, function (next) {
-  console.log('this seems to work');
+  //console.log('this seems to work');
   this.populate({
     path: 'user',
     select: 'name photo',
@@ -63,7 +63,7 @@ reviewSchema.statics.calcAverageRating = async function (tourId) {
     },
   ]);
 
-  console.log(stats);
+  //console.log(stats);
   if (stats.length > 0) {
     await Tour.findByIdAndUpdate(
       tourId,

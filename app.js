@@ -62,8 +62,8 @@ app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   //lets say we want to have a way to add date with every response
   //by using a middleware we can just add the current date to the request
-  console.log('added time to the request');
-  console.log(req.cookies); //we can access the cookies on the request because of the package cookie-parser
+  //console.log('added time to the request');
+  //console.log(req.cookies); //we can access the cookies on the request because of the package cookie-parser
   next();
 });
 //built in middleware to serve static files
@@ -127,7 +127,7 @@ app.all('*', (req, res, next) => {
 //COMMON MIDDLEWARE TO HANDLE ERRORS
 app.use((err, req, res, next) => {
   //by defining four parameters express knows this a error handling middleware
-  console.log(err);
+  //console.log(err);
   res.status(err.statusCode).json({
     status: err.status,
     message: err.message,

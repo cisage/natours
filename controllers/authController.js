@@ -20,7 +20,7 @@ exports.signUp = async (req, res, next) => {
     const newUser = await User.create(req.body);
 
     const url = `${req.protocol}://${req.get('host')}/me`;
-    console.log(url);
+    //console.log(url);
     await new Email(newUser, url).sendWelcome();
 
     const token = signToken(newUser._id);
@@ -51,7 +51,7 @@ exports.signUp = async (req, res, next) => {
 exports.login = async (req, res, next) => {
   //check if email and password are present in request body
   const { email, password } = req.body;
-  console.log(email, password);
+  //console.log(email, password);
   if (!email || !password) {
     return next(new AppError('Please provide email or password', 400));
   }
@@ -65,7 +65,7 @@ exports.login = async (req, res, next) => {
   //we want to keep it vague, so the hacker doesnt know if the email if wrong or the password
 
   //if user is present and password is correct then return token with user
-  console.log(user);
+  //console.log(user);
   const token = signToken(user._id);
 
   const cookieOptions = {
@@ -80,7 +80,7 @@ exports.login = async (req, res, next) => {
   }
   res.cookie('jwt', token, cookieOptions);
 
-  console.log(token);
+  // console.log(token);
 
   res.status(200).json({
     status: 'success',
@@ -119,7 +119,7 @@ exports.protect = async (req, res, next) => {
     //now we are checking for the jwt token which is sent as a request
   }
 
-  console.log(token);
+  //console.log(token);
   if (!token) {
     return next(
       new AppError('You are not logged in. Log in to get access', 401)
@@ -137,7 +137,7 @@ exports.protect = async (req, res, next) => {
     }
   });
 
-  console.log(decodedString);
+  //console.log(decodedString);
 
   //3) check if user who is asking for the resouce exists
   const user = await User.findById(decodedString.id);
@@ -221,8 +221,8 @@ exports.restrictTo = (...roles) => {
 
 exports.forgotPassword = async (req, res, next) => {
   //1)find user by email
-  console.log('this is bloddy criminal');
-  console.log(req.body.email);
+  //console.log('this is bloddy criminal');
+  //console.log(req.body.email);
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
     return next(new AppError('The user with this email does not exist', 404));
@@ -272,7 +272,7 @@ exports.resetPassword = async (req, res, next) => {
     .update(req.params.token)
     .digest('hex');
 
-  console.log(Date.now());
+  //console.log(Date.now());
   const user = await User.findOne({
     passwordResetToken: hashedToken,
     passwordResetAt: { $gt: Date.now() },

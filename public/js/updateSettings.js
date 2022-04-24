@@ -29,7 +29,7 @@ if (formUpdateData) {
     form.append('name', document.getElementById('name').value);
     form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
-    console.log(form);
+    //console.log(form);
     updateSettings(form, 'data');
   });
 }
@@ -41,7 +41,7 @@ if (formUpdatePassword) {
     const passwordCurrent = document.getElementById('password-current').value;
     const password = document.getElementById('password').value;
     const passwordConfirm = document.getElementById('password-confirm').value;
-    console.log(passwordCurrent, password, passwordConfirm);
+    //console.log(passwordCurrent, password, passwordConfirm);
     updateSettings({ passwordCurrent, password, passwordConfirm }, 'password');
   });
 }

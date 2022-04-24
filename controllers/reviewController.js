@@ -54,14 +54,14 @@ exports.updateReview = async (req, res, next) => {
     filter = filteredObj(req.body, 'review', 'rating');
     const review = await Review.findById(req.params.id);
     //now we are gonna check if the user that is logged in is the same as the user who created the review
-    console.log(req.user._id, review.user._id);
+    //console.log(req.user._id, review.user._id);
     if (!req.user._id === review.user._id) {
       return next(
         new AppError('You are not authorized to update this review'),
         403
       );
     }
-    console.log(filter);
+    //console.log(filter);
     if (filter.review) {
       review.review = filter.review;
     }
@@ -85,7 +85,7 @@ exports.deleteReview = async (req, res, next) => {
   try {
     const review = await Review.findById(req.params.id);
     //now we are gonna check if the user that is logged in is the same as the user who created the review
-    console.log(req.user._id, review.user._id);
+    //console.log(req.user._id, review.user._id);
     if (!req.user._id === review.user._id) {
       return next(
         new AppError('You are not authorized to delete this review'),
