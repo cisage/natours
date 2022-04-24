@@ -4,7 +4,7 @@ const login = async (email, password) => {
     //in axios if an error is sent back as response then we can use catch that error on the client side
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:3000/api/v1/users/login',
+      url: '/api/v1/users/login',
       data: {
         //whatever we put in data is sent as req.body
         email: email,
@@ -29,7 +29,7 @@ const logout = async () => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://127.0.0.1:3000/api/v1/users/logout',
+      url: '/api/v1/users/logout',
     });
     if (res.data.status === 'success') {
       window.setTimeout(() => {
