@@ -44,7 +44,7 @@ mongoose
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log('app on running port 3000');
+  console.log(`app running on port ${port}`);
 });
 
 //we normally use environment variables to change confu=iguration of our app
